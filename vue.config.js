@@ -1,11 +1,12 @@
+const aa = 0
 const path = require('path')
 const pkg = require('./package.json')
-const CompressionPlugin = require("compression-webpack-plugin") // 开启gzip
+const CompressionPlugin = require('compression-webpack-plugin') // 开启gzip
 const ProgressBarPlugin = require('progress-bar-webpack-plugin') // 构建进度插件
 const isProd = process.env.NODE_ENV === 'production'
 const publicPathList = {
   development: './',
-  production: 'https://',
+  production: 'https://'
 }
 process.env.VUE_APP_VERSION = pkg.version
 
@@ -22,9 +23,7 @@ module.exports = {
     // 代理
     proxy: {
       '/api': {
-        target: isProd
-          ? 'https://'
-          : 'http://',
+        target: isProd ? 'https://' : 'http://',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
@@ -33,10 +32,8 @@ module.exports = {
     }
   },
 
-  configureWebpack: config => {
-    const plugins = [
-      new ProgressBarPlugin()
-    ]
+  configureWebpack: (config) => {
+    const plugins = [new ProgressBarPlugin()]
 
     if (isProd) {
       config.optimization = {
@@ -57,7 +54,8 @@ module.exports = {
       }
 
       plugins.push(
-        new CompressionPlugin({ // gzip压缩
+        new CompressionPlugin({
+          // gzip压缩
           test: /\.js$|\.html$|\.css$|\.jpg$|\.jpeg$|\.png/, // 需要压缩的文件类型
           threshold: 1024,
           deleteOriginalAssets: false // 是否删除原文件
@@ -70,13 +68,11 @@ module.exports = {
     }
   },
 
-  chainWebpack: config => {
-    config.resolve.alias
-      .set("@", resolve("src"))
-    config.plugin('html')
-      .tap(args => {
-        args[0].title = '标题'
-        return args
-      })
+  chainWebpack: (config) => {
+    config.resolve.alias.set('@', resolve('src'))
+    config.plugin('html').tap((args) => {
+      args[0].title = '标题'
+      return args
+    })
   }
 }
