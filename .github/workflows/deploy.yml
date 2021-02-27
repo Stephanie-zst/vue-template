@@ -16,7 +16,9 @@ jobs:
         node-version: [12.x] # 配置所需node版本
     steps: # 自动化步骤
       - name: Checkout
-      - uses: actions/checkout@v2 # 第一步，检出仓库副本
+        uses: actions/checkout@v2 # 第一步，检出仓库副本
+        with:
+          persist-credentials: false
 
       - name: Use Node.js ${{ matrix.node-version }} # 规定node.js版本(可不配置)
         uses: actions/setup-node@v1
