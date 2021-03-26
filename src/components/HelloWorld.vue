@@ -1,30 +1,16 @@
 <template>
   <div class="hello">
-    <p>components: {{ msg }}-{{ tip }}</p>
+    <h1>{{ msg }}</h1>
   </div>
 </template>
 
 <script>
 export default {
   name: 'HelloWorld',
-  props: {
-    msg: {
-      required: true,
-      type: String,
-      default: '',
-    },
-    tip: {
-      required: false,
-      type: String,
-      default: '',
-    },
-  },
   data() {
-    return {}
+    return {
+      msg: 'Hello Jest',
+    }
   },
-  methods: {},
 }
 </script>
-
-<style scoped>
-</style>

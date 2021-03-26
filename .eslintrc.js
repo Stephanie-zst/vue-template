@@ -2,18 +2,18 @@ module.exports = {
   root: true,
   parserOptions: {
     parser: 'babel-eslint', //指定babel-eslint 作为解析器  babel-eslint一个对Babel解析器的包装，使其能够与 ESLint 兼容
-    ecmaVersion: 6 //指定你想要使用的 ECMAScript 版本
+    ecmaVersion: 6, //指定你想要使用的 ECMAScript 版本
   },
   env: {
     browser: true,
     es6: true,
-    node: true
+    node: true,
   },
   extends: [
     'eslint:recommended', //来用启用推荐的规则，报告一些常见的问题，在eslint的规则中都带有一个'对号'的图标
     'plugin:vue/essential', //插件说明 https://vue-loader-v14.vuejs.org/zh-cn/workflow/linting.html
     'standard',
-    'plugin:prettier/recommended' // 注意 只有设置了这个属性 格式化才能正确 因为eslint 和 prettier 的配置可能会冲突,所以使用以上两个插件让 prettier 采用 eslint 的配置,实现格式化
+    'plugin:prettier/recommended', // 注意 只有设置了这个属性 格式化才能正确 因为eslint 和 prettier 的配置可能会冲突,所以使用以上两个插件让 prettier 采用 eslint 的配置,实现格式化
   ],
   plugins: ['vue'], //使用eslint-plugin-vue插件 是为了检测.vue文件中 <template> 和 <script> 中的js代码
   rules: {
@@ -75,8 +75,8 @@ module.exports = {
     'no-new-wrappers': 1, // 禁止对 String，Number 和 Boolean 使用 new 操作符.没有任何理由将这些基本包装用作构造函数
     'prefer-promise-reject-errors': 1, // 要求使用 Error 对象作为 Promise 拒绝的原因
     'no-labels': 1, //禁用标签语句
-    'spaced-comment': 2,
+    'spaced-comment': ['error', 'always'],
     'no-unused-vars': ['error', { vars: 'all', args: 'after-used', ignoreRestSiblings: false }],
-    'camelcase': 1,
-  }
+    camelcase: 1,
+  },
 }

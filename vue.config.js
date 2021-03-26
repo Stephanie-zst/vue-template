@@ -1,4 +1,3 @@
-const aa = 0
 const path = require('path')
 const pkg = require('./package.json')
 const CompressionPlugin = require('compression-webpack-plugin') // 开启gzip

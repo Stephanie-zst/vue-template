@@ -1,17 +1,17 @@
 <template>
   <div class="other">
     <p>OtherPage</p>
-    <HelloWorld msg="HelloWorld" />
+    <Main />
   </div>
 </template>
 
 <script>
-import HelloWorld from '@/components/HelloWorld'
+import Main from '@/components/Main'
 
 export default {
   name: 'OtherPage',
   components: {
-    HelloWorld,
+    Main,
   },
   data() {
     return {}
@@ -24,5 +24,4 @@ export default {
 }
 </script>
 
-<style>
-</style>
+<style></style>
